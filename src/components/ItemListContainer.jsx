@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { MOCK_DATA } from "../data/MOCK_DATA";
+import { useParams } from "react-router-dom";
 
 const pedirDatos = () =>{
     return new Promise ((resolve, reject) => {
@@ -14,11 +15,15 @@ const pedirDatos = () =>{
 const ItemListContainer = () => {
 
     const[productos, setProductos] = useState([])
+    const {categoryId} = useParams()
+
      
     useEffect(() => {
         pedirDatos()
             .then ((res) => {
-                setProductos(res)
+                if (!categoryId) {
+                    setProductos(res)
+                } else {setProductos(res.filter((item) => item.category === categoryId)) }   
             })
             .catch ((error) => {
                 console.log(error)

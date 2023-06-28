@@ -11,9 +11,12 @@ const NavBar = () => {
                 </a>
             <nav className="headerNav">
                 <Link to="/" className="link">INICIO</Link>
-                <Link to="/nosotros" className="link">NOSOTROS</Link>
-                <Link to="/contacto" className="link">CONTACTO</Link>
-                <Link to="#" className="link">ARMA TU PC!</Link>
+                <Link to="/category/1" className="link">MONITOR</Link>
+                <Link to="/category/2" className="link">PLACA DE VIDEO</Link>
+                <Link to="/category/3" className="link">PROCESADOR</Link> 
+                <Link to="/Nosotros" className="link">NOSOTROS</Link>
+                <Link to="/Contacto" className="link">CONTACTO</Link>
+
                 <Link to="CartWidget"></Link>
             </nav>
             <CartWidget />
