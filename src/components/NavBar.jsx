@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import './Navbar.css'
+import CartWidget from "./CartWidget"
 
 const NavBar = () => {
     return(
@@ -8,11 +10,14 @@ const NavBar = () => {
                     <img src="/img/valvula.jpg" alt="" />
                 </a>
             <nav className="headerNav">
-                <Link to="/" className="link">Inicio</Link>
-                <Link to="/nosotros" className="link">Nosotros</Link>
-                <Link to="/contacto" className="link">Contacto</Link>
+                <Link to="/" className="link">INICIO</Link>
+                <Link to="/nosotros" className="link">NOSOTROS</Link>
+                <Link to="/contacto" className="link">CONTACTO</Link>
                 <Link to="#" className="link">ARMA TU PC!</Link>
+                <Link to="CartWidget"></Link>
             </nav>
+            <CartWidget />
+
             </div>
 
         </header>

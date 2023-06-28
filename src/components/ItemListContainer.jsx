@@ -20,46 +20,24 @@ const ItemListContainer = () => {
             .then ((res) => {
                 setProductos(res)
             })
-            .cath ((error) => {
+            .catch ((error) => {
                 console.log(error)
             })
     }, [])
 
-    const procesoAsync = (bool) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(()=> {
-                if (bool) {
-                    resolve("Promesa resuelta")
-                } else {
-                    reject("Promesa rechazada")
-                }           
-        }, 2000)
-        })
-    }
-
-    procesoAsync(false)
-        .then(() => {
-            console.log("Hola mundo")    
-        })
-        .catch (() => {
-            console.log("Chau mundo")    
-        })
         
     return(
         <div className="listContainer">
             <h2>Catalogo de productos</h2>
-            <div className="row">
+            <div className="row mx-3">
             {
                 productos.map ((prod) => (
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card style={{ width: '18rem' }} className="m-3" key={prod.id}>
+                        <Card.Img variant="top" src={prod.img} />
                         <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
+                            <Card.Title>{prod.nombre}</Card.Title>
+                            <Card.Text>{prod.precio}</Card.Text>
+                            <Button variant="primary">VER MAS</Button>
                         </Card.Body>
                     </Card>
                 ))
