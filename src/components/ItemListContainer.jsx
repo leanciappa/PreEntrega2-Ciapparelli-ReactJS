@@ -8,39 +8,44 @@ const pedirDatos = () =>{
     return new Promise ((resolve, reject) => {
         setTimeout (() => {
             resolve (MOCK_DATA)
-        }, 2000)
+        }, 500)
     })
 }
 
+
 const ItemListContainer = () => {
 
-    const[productos, setProductos] = useState([])
-    const {categoryId} = useParams()
+    const[category, setCategory] = useState([])
+    const {id} = useParams()
+    const [cardItem, setCardItem] =useState([])
 
      
     useEffect(() => {
         pedirDatos()
             .then ((res) => {
-                if (!categoryId) {
-                    setProductos(res)
-                } else {setProductos(res.filter((item) => item.category === categoryId)) }   
+                if (!id) {
+                    setCategory(res)
+                } else {setCategory(res.filter((item) => item.category === id)) }   
             })
             .catch ((error) => {
                 console.log(error)
             })
-    }, [])
+    }, [id])
 
         
     return(
+        
+        
         <div className="listContainer">
             <h2>Catalogo de productos</h2>
             <div className="row mx-3">
             {
-                productos.map ((prod) => (
+                category.map ((prod) => (
                     <Card style={{ width: '18rem' }} className="m-3" key={prod.id}>
                         <Card.Img variant="top" src={prod.img} />
                         <Card.Body>
                             <Card.Title>{prod.nombre}</Card.Title>
+                            <Card.Title>{prod.descripcion}</Card.Title>
                             <Card.Text>{prod.precio}</Card.Text>
                             <Button variant="primary">VER MAS</Button>
                         </Card.Body>
